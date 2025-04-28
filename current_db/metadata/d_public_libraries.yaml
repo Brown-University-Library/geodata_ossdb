@@ -1,6 +1,6 @@
 ---
 # TITLE
-dct_title_s: Public Libraries, Rhode Island, 2022
+dct_title_s: Public Libraries, Rhode Island, 2023
 
 # DESCRIPTION
 dct_description_sm:
@@ -42,11 +42,11 @@ dcat_theme_sm:
 
 # TEMPORAL
 dct_temporal_sm:
-- '2022'
+- '2023'
 - 21st century
 
 # DATE ISSUED
-dct_issued_s: '2024-05'
+dct_issued_s: '2025-04'
 
 # SPATIAL
 dct_spatial_sm:
@@ -71,14 +71,14 @@ dct_accessRights_s: Public
 dct_format_s: SQLite
 
 # UNIQUE ID
-id: brown-04172024AAH
+id: brown-04172025AAL
 
 # IDENTIFIER
 dct_identifier_sm:
 - https://github.com/Brown-University-Library/geodata_ossdb
 
 # METADATA MODIFIED
-gbl_mdModified_dt: '2024-04-17'
+gbl_mdModified_dt: '2025-04-17'
 
 # METADATA VERSION
 gbl_mdVersion_s: Aardvark

@@ -6,7 +6,7 @@ for schools and colleges, using the RIDOT address locator
 Output coordinates are in RI State Plane
 
 Frank Donnelly / Head of GIS & Data Services / Brown University Library
-Mar 15, 2023 revised Apr 16, 2024
+Mar 15, 2023 revised Apr 1, 2025
 """
 
 import csv, os, sys, requests, json, pandas as pd, geopandas as gpd
@@ -17,8 +17,8 @@ from time import sleep
 
 geocode=True # TYPE True to geocode, False to exit to verify addresses are correct
 
-infolder='input_03_2024' # UPDATE input directory
-outfolder='output_03_2024'# UPDATE output directory
+infolder='input_04_2025' # UPDATE input directory
+outfolder='output_04_2025'# UPDATE output directory
 fixfile='fixed_addresses.json'
 today=str(date.today()).replace('-','_')
 

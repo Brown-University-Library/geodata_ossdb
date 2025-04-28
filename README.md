@@ -24,7 +24,7 @@ The database and associated documentation are licensed under a [Creative Commons
 
 ## Downloads
 
-<u>CURRENT VERSION</u>: ossdb_2024_05
+<u>CURRENT VERSION</u>: ossdb_2025_04
 
 - [OSSDB SQLite](https://github.com/Brown-University-Library/geodata_ossdb/raw/main/current_db/ossdb_sqlite.zip): the primary database, a SQLite / Spatialite database that can be used in desktop GIS packages such as QGIS and ArcGIS Pro, and SQL database tools like the QGIS DB Manager, Spatialite GUI, and DB Browser for SQLite
 

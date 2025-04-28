@@ -17,8 +17,8 @@ from time import sleep
 
 geocode=True # TYPE True to geocode, False to exit to verify addresses are correct
 
-infolder='input_pls_fy2021_csv' # UPDATE input directory
-outfolder='output_pls_fy2021_csv'# UPDATE output directory
+infolder='input_pls_fy2022_csv' # UPDATE input directory
+outfolder='output_pls_fy2022_csv'# UPDATE output directory
 fixfile='fixed_addresses.json'
 today=str(date.today()).replace('-','_')
 

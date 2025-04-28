@@ -2,9 +2,5 @@
   "HOS00124" : 
 	{"add":"345 BLACKSTONE BOULEVARD",
 	"city":"PROVIDENCE",
-	"zip":"02906"},
-  "HOS00102" : 
-	{"add":"3 REGAN COURT",
-	"city":"CRANSTON",
-	"zip":"02920"}	
+	"zip":"02906"}
 }

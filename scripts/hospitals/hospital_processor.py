@@ -6,7 +6,7 @@ for hospitals, using the RIDOT address locator
 Output coordinates are in RI State Plane
 
 Frank Donnelly / GIS and Data Librarian / Brown University
-Mar 23, 2023, Revised Apr 5, 2023
+Mar 23, 2023, Revised Apr 1, 2025
 """
 
 import csv, os, sys, requests, json, pandas as pd, geopandas as gpd
@@ -17,14 +17,14 @@ from time import sleep
 
 geocode=True # TYPE True to geocode, False to exit to verify addresses are correct
 
-infolder='input_03_2024' # UPDATE input directory
-outfolder='output_03_2024'# UPDATE output directory
+infolder='input_04_2025' # UPDATE input directory
+outfolder='output_04_2025'# UPDATE output directory
 fixfile='fixed_addresses.json'
 today=str(date.today()).replace('-','_')
 
 # Columns in the input file to keep
-keepcols=['Name','License No', 'Profession', 'License Type', 'Address Line 1',
-          'Address Line 2', 'Address Line 3', 'City',
+keepcols=['Name','License No', 'Profession', 'License Type', 'License Address Line 1',
+          'License Address Line 2', 'License Address Line 3', 'City',
           'State','Zip', 'Total Capacity Beds']
 
 typecols={'Zip':str}
@@ -46,7 +46,7 @@ df_all=pd.concat(dflist,axis=0,ignore_index=True)
 print('All records:',df_all.shape[0])
 # Remove trailing and leading whitespace
 df_all['Name']=df_all['Name'].str.strip()
-df_all['Address Line 1']=df_all['Address Line 1'].str.strip()
+df_all['License Address Line 1']=df_all['License Address Line 1'].str.strip()
 # Add current year for each record
 df_all['year']=today.split('_')[0]
 
@@ -61,14 +61,14 @@ for k,v in fix_address.items():
     with open(fixfile,'a') as f:
         if k in df_all['License No'].values:
             # Store the bad address in a new column
-            add_cols = ['Address Line 1','City','Zip']
+            add_cols = ['License Address Line 1','City','Zip']
             series_list = [df_all[c] for c in add_cols]
             df_all.loc[df_all['License No'] == k, 'add_orig'] = series_list[0].str.cat(series_list[1:], sep=' ')
             # Update existing address
             print('\n Updating address for record \n',
                   df_all.loc[df_all['License No']==k,['License No','Name','add_orig']].values,
                   '\n To new address:',v['add'],v['city'],v['zip'],'\n',file=f)   
-            df_all.loc[df_all['License No'] == k, 'Address Line 1'] = v['add']
+            df_all.loc[df_all['License No'] == k, 'License Address Line 1'] = v['add']
             df_all.loc[df_all['License No'] == k, 'City'] = v['city']
             df_all.loc[df_all['License No'] == k, 'Zip'] = v['zip']
 print('Wrote address fix list \n')
@@ -89,7 +89,7 @@ matches.append(newfields)
 # Geocoding begins here, loop through records in df
 base_url_ad='https://risegis.ri.gov/gpserver/rest/services/E911_Sites_AddressLocator/GeocodeServer/findAddressCandidates?'
 for idx in df_all.index:
-    address=df_all['Address Line 1'][idx].replace('#','')
+    address=df_all['License Address Line 1'][idx].replace('#','')
     city=df_all['City'][idx]
     state=df_all['State'][idx]
     zipcode=df_all['Zip'][idx]
@@ -131,6 +131,21 @@ print('Finished geocoding',idx+1,'records','\n')
 df_match = pd.DataFrame(matches[1:], columns=matches[0]).set_index('uid')
 df_final=df_all.join(df_match)
 
+# This block handles missing RI E911 address for ENCOMPASS HEALTH REHABILITATION HOSPITAL OF JOHNSTON
+# DELETE in future if system is updated with this address
+if 'RHC02107' in df_final['License No'].values:
+    idx = df_final.loc[df_final['License No']=='RHC02107'].index[0]
+    if 'NO MATCHES' in df_final.loc[df_final.index==idx].values:
+        df_final.loc[df_final.index == idx, 'xcoord'] = '321512'
+        df_final.loc[df_final.index == idx, 'ycoord'] = '273216'
+        df_final.loc[df_final.index == idx, 'match_note'] = 'MANUAL MATCH'
+        print('Manual fix applied for ENCOMPASS HEALTH REHABILITATION HOSPITAL.')
+    else:
+        print('No fix applied for ENCOMPASS HEALTH REHABILITATION HOSPITAL: already has a matching address.')
+else:
+    print('No fix applied for ENCOMPASS HEALTH REHABILITATION HOSPITAL: record not in the dataset.')
+
+# Get summary of match counts
 print(df_match.match_note.value_counts())
 match_count=df_match['match_note'].value_counts().to_dict()
 
@@ -153,8 +168,8 @@ for k, v in hosp_xyfix.items():
 # Write Output to CSV
 
 colnew={'Name':'name','License No':'license_id','Profession':'factype',
-        'License Type':'lictype','Address Line 1':'address1', 
-        'Address Line 2':'address2', 'Address Line 3':'address3', 
+        'License Type':'lictype','License Address Line 1':'address1', 
+        'License Address Line 2':'address2', 'License Address Line 3':'address3', 
         'City':'city','State':'state', 'Zip':'zipcode',
         'Total Capacity Beds':'hosp_beds'}
 

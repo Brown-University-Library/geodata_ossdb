@@ -8,7 +8,7 @@ Example of reading variables from census website, and writing and reading to CSV
 import requests,csv
 
 #Set variables
-year='2021'
+year='2023'
 dsource1='acs'
 dsource2='acs5'
 dname='profile'

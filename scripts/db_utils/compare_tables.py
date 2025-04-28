@@ -8,15 +8,15 @@ os.chdir('..')
 
 #Modify these values to test different sources
 #db1 should be the original db
-db1='ossdb_2023_07.sqlite' 
-tab1='c_zctas_acs2021_socecon'
+db1='ossdb_2024_05.sqlite' 
+tab1='c_zctas_zbp2021_ind' #socecon pophous
 uid1='GEOIDLONG'
-col1='HSHD01_E'
+col1='N00' #HSHD01_E HOC01_E
 #db2 should be the test database
-db2=os.path.join('census_acs','outputs','testdb.sqlite')
-tab2='zctas_acs2022_socialecon'
+db2=os.path.join('census_zbp','outputs','testdb.sqlite')
+tab2='zbp2022_ind' #socialecon #pophousing
 uid2='GEOIDLONG'
-col2='HSHD01_E'
+col2='N00' #HSHD01_E HOC01_E
 
 def leftjoin(left_id,left_t,right_id,right_t):
     lquery='''SELECT a.{0}
