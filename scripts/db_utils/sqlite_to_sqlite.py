@@ -7,27 +7,27 @@ os.chdir('..')
 
 #MODIFY these values to pull from the right sources
 #db1 should be the original db - store in folder above this script
-db1='ossdb_2025_04_WORKING.sqlite'
-tabdrop=[#'c_acs2021_lookup',
-          'c_csubdivs_acs2022_pophous','c_csubdivs_acs2022_socecon',
-          'c_tracts_acs2022_pophous','c_tracts_acs2022_socecon',
-          'c_zctas_acs2022_pophous','c_zctas_acs2022_socecon']
-# tabdrop=['c_zctas_zbp2021_emp','c_zctas_zbp2021_ind','c_zbp2021_indcodes']
+db1='ossdb_2026_02_WORKING.sqlite'
+tabdrop=['c_acs2023_lookup',
+          'c_csubdivs_acs2023_pophous','c_csubdivs_acs2023_socecon',
+          'c_tracts_acs2023_pophous','c_tracts_acs2023_socecon',
+          'c_zctas_acs2023_pophous','c_zctas_acs2023_socecon']
+#tabdrop=['c_zctas_zbp2022_emp','c_zctas_zbp2022_ind','c_zbp2022_indcodes']
 
 #db2 should be the test database
 #Keys (k) are the test db table names, values (v) will be the new table names
 db2=os.path.join('census_acs','outputs','testdb.sqlite')
-tabadd={#'acs2022_lookup':'c_acs2022_lookup',
-        'county_subdivs_acs2023_pophousing': 'c_csubdivs_acs2023_pophous',
-        'county_subdivs_acs2023_socialecon': 'c_csubdivs_acs2023_socecon',
-        'tracts_acs2023_pophousing': 'c_tracts_acs2023_pophous',
-        'tracts_acs2023_socialecon': 'c_tracts_acs2023_socecon',
-        'zctas_acs2023_pophousing': 'c_zctas_acs2023_pophous',
-        'zctas_acs2023_socialecon': 'c_zctas_acs2023_socecon',
+tabadd={'acs2024_lookup':'c_acs2024_lookup',
+        'county_subdivs_acs2024_pophousing': 'c_csubdivs_acs2024_pophous',
+        'county_subdivs_acs2024_socialecon': 'c_csubdivs_acs2024_socecon',
+        'tracts_acs2024_pophousing': 'c_tracts_acs2024_pophous',
+        'tracts_acs2024_socialecon': 'c_tracts_acs2024_socecon',
+        'zctas_acs2024_pophousing': 'c_zctas_acs2024_pophous',
+        'zctas_acs2024_socialecon': 'c_zctas_acs2024_socecon',
         }
-# tabadd={'zbp2022_emp':'c_zctas_zbp2022_emp',
-#         'zbp2022_ind': 'c_zctas_zbp2022_ind',
-#         'zbp2022_indcodes': 'c_zbp2022_indcodes'}
+#tabadd={'zbp2023_emp':'c_zctas_zbp2023_emp',
+#       'zbp2023_ind': 'c_zctas_zbp2023_ind',
+#       'zbp2023_indcodes': 'c_zbp2023_indcodes'}
 
 def table_exists(dbalias,dbname,tablist):
     for t in tablist:

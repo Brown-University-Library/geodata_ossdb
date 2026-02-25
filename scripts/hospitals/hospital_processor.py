@@ -5,8 +5,8 @@ for hospitals, using the RIDOT address locator
 
 Output coordinates are in RI State Plane
 
-Frank Donnelly / GIS and Data Librarian / Brown University
-Mar 23, 2023, Revised Apr 1, 2025
+Frank Donnelly / Head of GIS & Data Services / Brown University
+Mar 23, 2023, Revised Feb 4, 2026
 """
 
 import csv, os, sys, requests, json, pandas as pd, geopandas as gpd
@@ -17,8 +17,8 @@ from time import sleep
 
 geocode=True # TYPE True to geocode, False to exit to verify addresses are correct
 
-infolder='input_04_2025' # UPDATE input directory
-outfolder='output_04_2025'# UPDATE output directory
+infolder='input_02_2026' # UPDATE input directory
+outfolder='output_02_2026'# UPDATE output directory
 fixfile='fixed_addresses.json'
 today=str(date.today()).replace('-','_')
 

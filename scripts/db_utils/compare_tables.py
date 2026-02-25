@@ -7,16 +7,16 @@ import os, sqlite3
 os.chdir('..')
 
 #Modify these values to test different sources
-#db1 should be the original db
-db1='ossdb_2024_05.sqlite' 
-tab1='c_zctas_zbp2021_ind' #socecon pophous
+#db1 should be the original db, stored in folder above working directory
+db1='ossdb_2025_04.sqlite' 
+tab1='c_tracts_acs2023_pophous' #socecon pophous zctas_zbpXXXX_ind zctas_zbpXXXX_emp
 uid1='GEOIDLONG'
-col1='N00' #HSHD01_E HOC01_E
-#db2 should be the test database
-db2=os.path.join('census_zbp','outputs','testdb.sqlite')
-tab2='zbp2022_ind' #socialecon #pophousing
+col1='HOC01_E' #N00 ESTAB HSHD01_E HOC01_E
+#db2 should be the test database, stored in project directory
+db2=os.path.join('census_acs','outputs','testdb.sqlite')
+tab2='tracts_acs2024_pophousing' #socialecon #pophousing zbpXXXX_ind zbpXXXX_emp
 uid2='GEOIDLONG'
-col2='N00' #HSHD01_E HOC01_E
+col2='HOC01_E' #N00 ETSAB HSHD01_E HOC01_E
 
 def leftjoin(left_id,left_t,right_id,right_t):
     lquery='''SELECT a.{0}

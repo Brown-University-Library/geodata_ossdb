@@ -1,6 +1,6 @@
 ---
 # TITLE
-dct_title_s: Pre-K to 12 Schools, Rhode Island, 2025
+dct_title_s: Pre-K to 12 Schools, Rhode Island, 2026
 
 # DESCRIPTION
 dct_description_sm:
@@ -44,11 +44,11 @@ dcat_theme_sm:
 
 # TEMPORAL
 dct_temporal_sm:
-- '2025'
+- '2026'
 - 21st century
 
 # DATE ISSUED
-dct_issued_s: '2025-04'
+dct_issued_s: '2026-02'
 
 # SPATIAL
 dct_spatial_sm:
@@ -73,14 +73,14 @@ dct_accessRights_s: Public
 dct_format_s: SQLite
 
 # UNIQUE ID
-id: brown-04172025AAI
+id: brown-02122026AAI
 
 # IDENTIFIER
 dct_identifier_sm:
 - https://github.com/Brown-University-Library/geodata_ossdb
 
 # METADATA MODIFIED
-gbl_mdModified_dt: '2025-04-17'
+gbl_mdModified_dt: '2026-02-12'
 
 # METADATA VERSION
 gbl_mdVersion_s: Aardvark
